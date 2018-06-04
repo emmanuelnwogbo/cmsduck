@@ -1,0 +1,32 @@
+.gate {
+  position: fixed;
+  top: 3rem;
+  right: 2rem;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  background: $home-background-color;
+  z-index: 3000;
+  transition: transform .8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  &__form {
+    position: fixed;
+    z-index: 4000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 50vh;
+    min-width: 25vw;
+    background: $container-background-color;
+    display: none;
+  }
+  &__checkbox {
+    z-index: 4000;
+  }
+  &__checkbox:checked~& {
+    transform: scale(80);
+  }
+  &__checkbox:checked~&__form {
+    display: flex;
+  }
+}

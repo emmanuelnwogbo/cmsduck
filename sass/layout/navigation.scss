@@ -1,0 +1,29 @@
+.navigation {
+  position: fixed;
+  top: 0;
+  color: $menu-item-color;
+  font-size: 3rem;
+  background: $home-background-color;
+  min-height: inherit;
+  &__checkbox {
+    display: none;
+    &:checked~.navigationTray {
+      animation-name: moveInLeft;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+      display: block;
+    }
+    &:checked~.nav_overlay {
+      animation-name: moveInLeftOverlay;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+      display: block;
+    }
+  }
+  &__button {
+    position: absolute;
+    left: 3rem;
+    top: 0;
+    cursor: pointer;
+  }
+}

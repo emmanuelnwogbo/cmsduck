@@ -1,0 +1,47 @@
+.navigationTray {
+  position: fixed;
+  top: 0;
+  color: $menu-item-color;
+  z-index: 1000;
+  font-size: 3rem;
+  background: $home-background-color;
+  width: 18%;
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  display: none;
+  &__checkbox {
+    display: none;
+    &:checked~.navigationTray {
+      animation: moveOutLeft 1s ease-out;
+    }
+    &:checked~.nav_overlay {
+      animation: moveOutLeftOverlay 1s ease-out;
+    }
+  }
+  &__nav {
+    align-self: center;
+  }
+  &__button {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+  }
+  &__list>li {
+    margin-bottom: 4rem;
+    list-style: none;
+  }
+  &__list>li>a {
+    text-decoration: none;
+    list-style: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 2rem;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: $menu-item-color;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

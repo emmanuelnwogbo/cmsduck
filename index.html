@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title>CMS Duck | Simple Content Management System</title>
+</head>
+
+<body>
+  <input type="checkbox" class="gate__checkbox" id="gate-checkbox" checked>
+  <div class="gate">&nbsp;</div>
+
+  <div class="gate__form">
+    <h2 class="gate__header">hello admin</h2>
+    <nav class="gate__form-nav">
+      <li class="gate__form-nav__item" id="facebookbtn">
+        <a href="#" class="gate__form-nav__link">
+          <span></span>login with facebook</a>
+      </li>
+      <li class="gate__form-nav__item" id="googlebtn">
+        <a href="#" class="gate__form-nav__link">
+          <span></span>login with google</a>
+      </li>
+    </nav>
+  </div>
+
+  <div class="navigation">
+    <label for="navi-toggle" class="navigation__button" id="navi-button">
+      <span class="navigation__icon">
+        <i class="fas fa-bars"></i>
+      </span>
+    </label>
+  </div>
+
+  <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+  <input type="checkbox" class="navigationTray__checkbox" id="naviTray-toggle">
+  <div class="nav_overlay" id="nav_overlay">&nbsp;</div>
+  <div class="navigationTray">
+    <label for="naviTray-toggle" class="navigationTray__button" id="naviTray-button">
+      <span class="navigationTray__icon">
+        <i class="fas fa-bars"></i>
+      </span>
+    </label>
+    <nav class="navigationTray__nav">
+      <ul class="navigationTray__list">
+        <li class="navigationTray__item">
+          <a href="#" class="navigationTray__link">
+            <span>&nbsp;</span>your blog posts</a>
+        </li>
+        <li class="navigationTray__item">
+          <a href="#" class="navigationTray__link">
+            <span>&nbsp;</span>your products</a>
+        </li>
+        <li class="navigationTray__item">
+          <a href="#" class="navigationTray__link">
+            <span>&nbsp;</span>suggest feature</a>
+        </li>
+        <li class="navigationTray__item">
+          <a href="#" class="navigationTray__link">
+            <span>&nbsp;</span>coming soon</a>
+        </li>
+        <li class="navigationTray__item">
+          <a href="#" class="navigationTray__link">
+            <span>&nbsp;</span>signout</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <main class="container">
+    <div class="header">
+
+    </div>
+  </main>
+</body>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>
+<script src="js/index.js"></script>
+
+</html>

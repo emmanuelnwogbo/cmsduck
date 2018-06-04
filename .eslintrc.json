@@ -1,0 +1,27 @@
+{
+    "extends": "airbnb-base",
+    "parser": "babel-eslint",
+    "env": {
+        "es6": true,
+        "browser": true
+    },
+    "rules": {
+        "semi": "error",
+        "quotes": ["off", "double"],
+        "no-console": ["error", {
+            "allow": ["warn"]
+        }],
+        "eol-last": ["off", "never"],
+        "linebreak-style": ["off", "windows"],
+        "arrow-parens": ["error", "as-needed"],
+        "import/newline-after-import": "off",
+        "no-duplicate-case": "error",
+        "no-trailing-spaces": ["error", {
+            "skipBlankLines": true
+        }],
+        "object-curly-newline": "off",
+        "no-restricted-syntax": "off",
+        "no-useless-escape": "off",
+        "arrow-body-style": "off"
+    }
+}
