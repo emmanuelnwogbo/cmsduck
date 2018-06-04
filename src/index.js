@@ -1,3 +1,4 @@
+const cmsDuckApiUrl = `http://localhost:8080/api/v1`;
 const config = {
   apiKey: "AIzaSyCszmw75vPpcRPR8acGvzyaXMYkMHs9Mr4",
   authDomain: "cms-duck.firebaseapp.com",
@@ -23,6 +24,25 @@ const navigationTrayCheckbox = document.getElementById('naviTray-toggle');
 const naviOverlay = document.getElementById('nav_overlay');
 const navigationTrayItems = document.getElementsByClassName('navigationTray__item');
 
+function apiSocialSignup(url, data) {
+  return fetch(url, {
+    body: JSON.stringify(data),
+    headers: {
+      'content-type': 'application/json'
+    },
+    method: 'POST',
+    mode: 'cors'
+  }).then(response => {
+    const data = response.json().then(data => ({
+      data,
+      status: response.status
+    })).then(res => {
+      console.log(res.status, res.data);
+      gateCheckbox.checked = false;
+    })
+  }).catch(error => console.log(`Error: ${error}`));
+}
+
 googleBtn.addEventListener('click', e => {
   e.preventDefault();
   firebase.auth().signInWithPopup(GoogleAuthProvider).then(function (result) {
@@ -32,17 +52,15 @@ googleBtn.addEventListener('click', e => {
       email,
       uid
     } = user
-    const newduckUser = {
+    const userData = {
       email,
       uid,
       token
     }
-    console.log(newduckUser);
-    gateCheckbox.checked = false;
+    apiSocialSignup(`${cmsDuckApiUrl}/auth/social/signup`, userData);
   }).catch(function (error) {
     var errorCode = error.code;
     var errorMessage = error.message;
-
     var email = error.email;
     var credential = error.credential;
   });
@@ -57,14 +75,12 @@ facebookBtn.addEventListener('click', e => {
       email,
       uid
     } = user
-    const newduckUser = {
+    const userData = {
       email,
       uid,
       token
     }
-    console.log(newduckUser);
-    gateCheckbox.checked = false;
-
+    apiSocialSignup(`${cmsDuckApiUrl}/auth/social/signup`, userData);
   }).catch(function (error) {
     var errorCode = error.code;
     var errorMessage = error.message;

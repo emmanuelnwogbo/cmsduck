@@ -1,5 +1,6 @@
 "use strict";
 
+var cmsDuckApiUrl = "http://localhost:8080/api/v1";
 var config = {
   apiKey: "AIzaSyCszmw75vPpcRPR8acGvzyaXMYkMHs9Mr4",
   authDomain: "cms-duck.firebaseapp.com",
@@ -25,6 +26,29 @@ var navigationTrayCheckbox = document.getElementById('naviTray-toggle');
 var naviOverlay = document.getElementById('nav_overlay');
 var navigationTrayItems = document.getElementsByClassName('navigationTray__item');
 
+function apiSocialSignup(url, data) {
+  return fetch(url, {
+    body: JSON.stringify(data),
+    headers: {
+      'content-type': 'application/json'
+    },
+    method: 'POST',
+    mode: 'cors'
+  }).then(function (response) {
+    var data = response.json().then(function (data) {
+      return {
+        data: data,
+        status: response.status
+      };
+    }).then(function (res) {
+      console.log(res.status, res.data);
+      gateCheckbox.checked = false;
+    });
+  }).catch(function (error) {
+    return console.log("Error: " + error);
+  });
+}
+
 googleBtn.addEventListener('click', function (e) {
   e.preventDefault();
   firebase.auth().signInWithPopup(GoogleAuthProvider).then(function (result) {
@@ -33,13 +57,12 @@ googleBtn.addEventListener('click', function (e) {
     var email = user.email,
         uid = user.uid;
 
-    var newduckUser = {
+    var userData = {
       email: email,
       uid: uid,
       token: token
     };
-    console.log(newduckUser);
-    gateCheckbox.checked = false;
+    apiSocialSignup(cmsDuckApiUrl + "/auth/social/signup", userData);
   }).catch(function (error) {
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -53,9 +76,16 @@ facebookBtn.addEventListener('click', function (e) {
   e.preventDefault();
   firebase.auth().signInWithPopup(FacebookAuthProvider).then(function (result) {
     var token = result.credential.accessToken;
-    console.log(token);
     var user = result.user;
-    console.log(user);
+    var email = user.email,
+        uid = user.uid;
+
+    var newduckUser = {
+      email: email,
+      uid: uid,
+      token: token
+    };
+    console.log(newduckUser);
     gateCheckbox.checked = false;
   }).catch(function (error) {
     var errorCode = error.code;
