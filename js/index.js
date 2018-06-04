@@ -29,10 +29,16 @@ googleBtn.addEventListener('click', function (e) {
   e.preventDefault();
   firebase.auth().signInWithPopup(GoogleAuthProvider).then(function (result) {
     var token = result.credential.accessToken;
-    console.log(token);
-
     var user = result.user;
-    console.log(user);
+    var email = user.email,
+        uid = user.uid;
+
+    var newduckUser = {
+      email: email,
+      uid: uid,
+      token: token
+    };
+    console.log(newduckUser);
     gateCheckbox.checked = false;
   }).catch(function (error) {
     var errorCode = error.code;
@@ -50,6 +56,7 @@ facebookBtn.addEventListener('click', function (e) {
     console.log(token);
     var user = result.user;
     console.log(user);
+    gateCheckbox.checked = false;
   }).catch(function (error) {
     var errorCode = error.code;
     var errorMessage = error.message;

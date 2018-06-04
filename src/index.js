@@ -27,10 +27,17 @@ googleBtn.addEventListener('click', e => {
   e.preventDefault();
   firebase.auth().signInWithPopup(GoogleAuthProvider).then(function (result) {
     const token = result.credential.accessToken;
-    console.log(token);
-
     const user = result.user;
-    console.log(user)
+    const {
+      email,
+      uid
+    } = user
+    const newduckUser = {
+      email,
+      uid,
+      token
+    }
+    console.log(newduckUser);
     gateCheckbox.checked = false;
   }).catch(function (error) {
     var errorCode = error.code;
@@ -45,9 +52,18 @@ facebookBtn.addEventListener('click', e => {
   e.preventDefault();
   firebase.auth().signInWithPopup(FacebookAuthProvider).then(function (result) {
     const token = result.credential.accessToken;
-    console.log(token);
     var user = result.user;
-    console.log(user)
+    const {
+      email,
+      uid
+    } = user
+    const newduckUser = {
+      email,
+      uid,
+      token
+    }
+    console.log(newduckUser);
+    gateCheckbox.checked = false;
 
   }).catch(function (error) {
     var errorCode = error.code;

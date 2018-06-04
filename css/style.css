@@ -48,7 +48,7 @@ body {
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  background: #21759b;
+  background: #5C6BC0;
   padding: .9rem;
   display: flex;
   flex-direction: column;
@@ -66,7 +66,7 @@ body {
   top: 0;
   height: 100vh;
   width: 100vw;
-  background: #21759b;
+  background: #5C6BC0;
   z-index: 1000;
   opacity: 0.6;
   display: none; }
@@ -78,7 +78,7 @@ body {
   height: 6rem;
   width: 6rem;
   border-radius: 50%;
-  background: #21759b;
+  background: #5C6BC0;
   z-index: 3000;
   transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
   .gate__form {
@@ -87,24 +87,48 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
+    border-radius: 5%;
     transform: translate(-50%, -50%);
     min-height: 50vh;
     min-width: 25vw;
     background: #f7f7f7;
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-family: 'Open Sans Condensed', sans-serif;
     display: none; }
   .gate__checkbox {
     z-index: 4000; }
   .gate__checkbox:checked ~ .gate {
     transform: scale(80); }
   .gate__checkbox:checked ~ .gate__form {
-    display: flex; }
+    display: flex;
+    flex-direction: column; }
+    .gate__checkbox:checked ~ .gate__form > * {
+      align-self: center;
+      text-align: center;
+      margin-top: 4rem; }
+    .gate__checkbox:checked ~ .gate__form > * > li {
+      list-style: none;
+      margin-bottom: 15px;
+      font-weight: 900;
+      cursor: pointer;
+      padding: 2rem; }
+      .gate__checkbox:checked ~ .gate__form > * > li > a {
+        text-decoration: none;
+        color: white; }
+
+#facebookbtn {
+  background: #3b5999; }
+
+#googlebtn {
+  background: #dd4b39; }
 
 .navigation {
   position: fixed;
   top: 0;
   color: #fff;
   font-size: 3rem;
-  background: #21759b;
+  background: #5C6BC0;
   min-height: inherit; }
   .navigation__checkbox {
     display: none; }
@@ -130,7 +154,7 @@ body {
   color: #fff;
   z-index: 1000;
   font-size: 3rem;
-  background: #21759b;
+  background: #5C6BC0;
   width: 18%;
   min-height: inherit;
   display: flex;
