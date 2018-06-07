@@ -47,3 +47,30 @@
     transform: translate(0);
   }
 }
+
+@keyframes moveInFromUp {
+  0% {
+    opacity: 0.6;
+    transform: translateY(-20rem);
+  }
+  80% {
+    transform: translateY(1rem);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes moveOutUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+  80% {
+    opacity: 0.6;
+    transform: translateY(6rem);
+  }
+  100% {
+    opacity: 0;
+  }
+}

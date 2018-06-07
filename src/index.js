@@ -24,6 +24,19 @@ const navigationTrayCheckbox = document.getElementById('naviTray-toggle');
 const naviOverlay = document.getElementById('nav_overlay');
 const navigationTrayItems = document.getElementsByClassName('navigationTray__item');
 
+const nameForProduct = document.getElementById('product__form-name');
+const descriptionForProduct = document.getElementById('product__form-description');
+const priceForProduct = document.getElementById('product__form-price');
+const uploadWidgetBtn = document.getElementById('upload_widget_opener');
+const productFormBtn = document.getElementById('product__form-btn');
+
+const addproductBtn = document.getElementById('container_header-product-btn');
+const productFormCheckBox1 = document.getElementById('product__form-checkbox');
+const productFormCheckBox2 = document.getElementById('product__form-checkbox-2');
+const productFormOverlay = document.getElementById('product__form-overlay');
+
+let itemPhotos;
+
 function apiSocialSignup(url, data) {
   return fetch(url, {
     body: JSON.stringify(data),
@@ -116,3 +129,74 @@ Array.from(navigationTrayItems, i => {
     }
   });
 });
+
+/*cloudinary config below*/
+document.getElementById("upload_widget_opener").addEventListener("click", function (e) {
+  e.preventDefault()
+  cloudinary.openUploadWidget({
+      cloud_name: 'dxlhzerlq',
+      upload_preset: 'acjlrvii'
+    },
+    function (error, result) {
+      if (error) {
+        return console.log(error);
+      }
+      const photos = result;
+      const numOfPhotos = photos.length;
+      itemPhotos = photos;
+
+    });
+}, false);
+
+priceForProduct.addEventListener('click', function () {
+  this.value = '₦';
+})
+
+addproductBtn.addEventListener('click', function (e) {
+  e.preventDefault()
+  productFormCheckBox1.checked = true;
+})
+
+productFormOverlay.addEventListener('click', function () {
+  productFormCheckBox1.checked = false;
+  productFormCheckBox2.checked = true;
+})
+
+productFormBtn.addEventListener('click', function (e) {
+  e.preventDefault()
+  if (nameForProduct.value.length < 1 || descriptionForProduct.value.length < 2 || priceForProduct.value.length < 2) {
+    return console.log('nope')
+  }
+
+  const inputs = [];
+  const valid = ['₦'];
+  let counter = 0;
+
+  for (let i of priceForProduct.value) {
+    inputs.push(i)
+  }
+
+  if (inputs.length === priceForProduct.value.length) {
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+    inputs.forEach(i => {
+      counter += 1;
+      numbers.forEach(n => {
+        if (i.includes(n)) {
+          valid.push(i);
+        }
+      })
+    });
+  }
+
+  if (counter === priceForProduct.value.length && valid.length !== priceForProduct.value.length) {
+    return console.log('done counting but something is wrong')
+  }
+
+  if (counter === priceForProduct.value.length && typeof itemPhotos !== 'object') {
+    return console.log('done counting but photos have not been uploaded')
+  }
+
+  if (counter === priceForProduct.value.length && valid.length === priceForProduct.value.length) {
+    return console.log(`done counting, and it's all good, ${inputs} ${itemPhotos}`)
+  }
+})

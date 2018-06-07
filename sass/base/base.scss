@@ -27,6 +27,33 @@ body {
   background: $container-background-color;
   width: 90%;
   min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  box-shadow: $shadow-dark;
+  &__items-div {
+    min-height: 100vh;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    background: $items-background-color;
+    box-shadow: $shadow-light;
+    &>h2 {
+      align-self: center;
+      letter-spacing: .5rem;
+      text-decoration: underline;
+      text-transform: uppercase;
+      font-weight: 900;
+      font-size: 2rem;
+      margin-top: .9rem;
+      color: $home-background-color;
+    }
+  }
+  &__items {
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 }
 
 .nav_overlay {
@@ -36,6 +63,17 @@ body {
   width: 100vw;
   background: $home-background-color;
   z-index: 1000;
+  opacity: 0.6;
+  display: none;
+}
+
+.product__form-overlay {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background: $home-background-color;
+  z-index: 2500;
   opacity: 0.6;
   display: none;
 }
